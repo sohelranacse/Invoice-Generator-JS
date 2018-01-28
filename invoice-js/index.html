@@ -3,8 +3,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Receipt Maker - Printable invoice generator.</title>
         <meta name="description" content="Our easy invoice maker helps you quickly generate a printable invoice for your customers. Just fill in the details and print online from your browser.">
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
+        <script src="jquery-3.3.1.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
         <script type="text/javascript" src="invoice.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link rel="stylesheet" type="text/css" href="invoice-screen.css" media="screen"/>
@@ -25,7 +25,7 @@
                     <li>Anything that is saved is stored in your browser's localStorage</li>
                 </ul>
                 <div class="toolbar">
-                    <h1>HTML5 Invoice Generator by <a href="https://www.thirdhandbd.com/">ThirdHand Bangladesh</a></h1>
+                    <h1>Receipt Maker by <a href="https://www.thirdhandbd.com/">ThirdHand Bangladesh</a></h1>
                     <button onclick="$('#help').toggle();">Help!</button>                
                     <button onclick="window.print();" title="Use your browser's capability to print to PDF!">Print...</button>
                     <input type="text" size="10" id="currency" value="USD">
@@ -154,7 +154,7 @@
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
-                        <td class="label" id="vat_label">VAT <input id="vat_percent" min="0" type="text" />%:</td>
+                        <td class="label" id="vat_label">VAT<input id="vat_percent" min="0" type="text"/>%:</td>
                         <td class="value" id="vat"><span id="vat_value">0.00</span> <span class="currency">USD</span></td>
                     </tr>
 
@@ -163,7 +163,7 @@
                         <td class="label translate" id="due_date_label" style="width: 65px;">Due date:</td>
                         <td class="value"><input id="due_date"/></td>
                         <td>&nbsp;</td>
-                        <td class="label translate" id="amount_due_label">Amount due:</td>
+                        <td class="label translate" id="amount_due_label">Amount Due:</td>
                         <td class="value"><span id="amount_due">0.00</span> <span class="currency">USD</span></td>
                     </tr>
 
