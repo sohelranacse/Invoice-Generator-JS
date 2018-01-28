@@ -1,44 +1,43 @@
 input {
-    -webkit-appearance: none;
+    -webkit-appearance: none !important;
 }
 
 #language {
-    display: none;
+    display: none !important;
 }
 
 nav {
-    display: none;
+    display: none !important;
 }
 
 body {
-    width: 800px;
+    width: 800px !important;
     /* to centre page on screen*/
-    margin: 0;
-    padding: 0;
-    background-color: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: none !important;
 }
 
 
 .print-display-none {
-    display: none;
+    display: none !important;
 }
 .prbt{
-    display: none;
+    display: none !important;
 }
 
 #page {
-    width: 100%;
+    width: 100% !important;
 }
 
 #padding {
-    padding: 0;
+    padding: 0 !important;
 }
 
 footer {
-    margin: 0;
+    margin: 0 !important;
 }
 
 #forkme {
-    display: none;
+    display: none !important;
 }
-
