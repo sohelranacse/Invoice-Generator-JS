@@ -131,7 +131,7 @@ $(document).ready(function(e) {
     $("#invoice_date").val(now.toLocaleDateString("et-EE"));
     
     
-    $("#currency").on("blur", function(e) {
+    $("#currency").on("keyup", function(e) {
         console.log($(".currency").get());
         $(".currency").html($("#currency").val());
         

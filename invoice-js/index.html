@@ -1,7 +1,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Invoice generator</title>
+        <title>Receipt Maker - Printable invoice generator.</title>
+        <meta name="description" content="Our easy invoice maker helps you quickly generate a printable invoice for your customers. Just fill in the details and print online from your browser.">
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="invoice.js"></script>
@@ -21,13 +22,10 @@
                     <li>Amount fields are calculated automatically</li>
                     <li>Nothing is saved on the server</li>
                     <li>Empty fields are excluded in the printed version</li>
-                    <li>VAT calculation is hidden until you specify VATIN</li>
-                    <li>Several fields can be prefilled via URL fragment #key=value</li>
                     <li>Anything that is saved is stored in your browser's localStorage</li>
-                    <li>Feel free to distribute this page :)</li>
                 </ul>
                 <div class="toolbar">
-                    <h1>HTML5 invoice generator by <a href="mailto: lauri.vosandi@gmail.com">ThirdHandbd</a></h1>
+                    <h1>HTML5 Invoice Generator by <a href="https://www.thirdhandbd.com/">ThirdHand Bangladesh</a></h1>
                     <button onclick="$('#help').toggle();">Help!</button>                
                     <button onclick="window.print();" title="Use your browser's capability to print to PDF!">Print...</button>
                     <input type="text" size="10" id="currency" value="USD">
@@ -42,7 +40,7 @@
                 <div class="lIn">
                     <table class="fields" style="float: left">
                         <tr>
-                            <td class="label translate" id="invoice_text_label">Invoice number:</td>
+                            <td class="label translate" id="invoice_text_label" style="width: 85px;">Invoice number:</td>
                             <td class="value"><input id="invoice_text"/></td>
                         </tr>
                     </table>
@@ -50,7 +48,7 @@
                 <div class="RIn">
                     <table class="fields">
                         <tr>
-                            <td class="label translate">Invoice date:</td>
+                            <td class="label translate" style="text-align: right; padding-right: 15px;">Invoice date:</td>
                             <td class="value"><input id="invoice_date"/></td>
                         </tr>
                     </table>
@@ -72,25 +70,25 @@
                 <div id="to" class="fields">
                     <h1>
                         <span class="translate">Invoice to</span>
-                        <input id="to_company" placeholder="Mari Maasikad OÜ"/>
+                        <input id="to_company" placeholder="Client Company"/>
                     </h1>
-                    <input class="icon person print-display-none" id="to_contact" placeholder="Mari Murakas"/>
-                    <input class="icon web print-display-none" id="to_company" placeholder="www.maasikad.com"/>
-                    <input class="icon email print-display-none" id="to_email" placeholder="mari.murakas@maasikad.com"/>
-                    <input class="icon address print-display-none" id="to_address" placeholder="_____, _____, ___, Estonia"/>
-                    <input class="icon phone print-display-none" id="to_phone" placeholder="+372 5467 8901"/>
+                    <input class="icon person print-display-none" id="to_contact" placeholder="Client's Name"/>
+                    <input class="icon web print-display-none" id="to_company" placeholder="Client's Website"/>
+                    <input class="icon email print-display-none" id="to_email" placeholder="Client's Email"/>
+                    <input class="icon address print-display-none" id="to_address" placeholder="Client's Address"/>
+                    <input class="icon phone print-display-none" id="to_phone" placeholder="Client's Phone"/>
                 </div>
 
                 <div id="from" class="fields">
                     <h1>
                         <span class="translate">From</span>
-                        <input id="from_company" value="ThirdHnadBD"/>
+                        <input id="from_company" placeholder="Your Company Name"/>
                     </h1>
-                    <input class="icon person print-display-none" id="from_contact" value="Tanzir Rahman"/>
-                    <input class="icon web print-display-none" id="from_company" value="www.thirdhandbd.com"/>
-                    <input class="icon email print-display-none" id="from_email" value="thirdhandbd@gmail.com"/>
-                    <input class="icon address print-display-none" id="from_address" value="Vilde tee 121b-118, Tallinn, 12613, Estonia"/>
-                    <input class="icon phone print-display-none" id="from_phone" value="+372 5332 9412"/>
+                    <input class="icon person print-display-none" id="from_contact" placeholder="Your Name"/>
+                    <input class="icon web print-display-none" id="from_company" placeholder="Your Website"/>
+                    <input class="icon email print-display-none" id="from_email" placeholder="Your Email"/>
+                    <input class="icon address print-display-none" id="from_address" placeholder="Your Address"/>
+                    <input class="icon phone print-display-none" id="from_phone" placeholder="Your Phone"/>
                 </div>
                     
                 
@@ -99,54 +97,40 @@
                     <tr>
                         <th class="translate">Item name</th>
                         <th class="quantity translate">Quantity</th>
-                        <th class="price translate">Unit price</th>
+                        <th class="price translate">Unit Price</th>
                         <th class="amount translate">Amount</th>
                         <th class="delete translate"></th>
                     </tr>
                     <tr>
-                        <td class="product"><input type="text" value="Cubietruck (Dual-core 1GHz, 2GB RAM, 8GB Flash, 1GBps LAN)"/></td>
+                        <td class="product"><input type="text" value="Some product name"/></td>
+                        <td class="quantity"><input type="text" value="10"/></td>
+                        <td class="price"><input type="text" value="50.00" min="0" step="0.05"/></td>
+                        <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
+                        <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
+                    </tr>
+                    <tr>
+                        <td class="product"><input type="text" value="Another product"/></td>
                         <td class="quantity"><input type="text" value="5"/></td>
-                        <td class="price"><input type="text" value="10.00" min="0" step="0.05"/></td>
-                        <td class="amount"><span class="value">5070.00</span> <span class="currency">USD</span></td>
-                        <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
-                    </tr>
-                    <tr>
-                        <td class="product"><input type="text" value="USB OTG cable, SATA cable, USB power cable, CPU heatsink"/></td>
-                        <td class="quantity"><input type="text" value="5"/></td>
-                        <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
+                        <td class="price"><input type="text" value="25.00" min="0" step="0.05"/></td>
                         <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
                         <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
                     </tr>
                     <tr>
-                        <td class="product"><input type="text" value="5V/2A EU adapter"/></td>
-                        <td class="quantity"><input type="text" value="30"/></td>
-                        <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
+                        <td class="product"><input type="text" value="Yet another product"/></td>
+                        <td class="quantity"><input type="text" value="15"/></td>
+                        <td class="price"><input type="text" value="65.00" min="0" step="0.05"/></td>
                         <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
                         <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
                     </tr>
                     <tr>
-                        <td class="product"><input type="text" value="Porting Estonian ID-card software stack, Chromium, MATE-desktop"/></td>
-                        <td class="quantity"><input type="text" value="1"/></td>
-                        <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
-                        <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
-                        <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
-                    </tr>
-                    <tr>
-                        <td class="product"><input type="text" value=""/></td>
+                        <td class="product"><input type="text" value="Item name"/></td>
                         <td class="quantity"><input type="text" value="0"/></td>
                         <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
                         <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
                         <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
                     </tr>
                     <tr>
-                        <td class="product"><input type="text" value=""/></td>
-                        <td class="quantity"><input type="text" value="0"/></td>
-                        <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
-                        <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
-                        <th class="delete translate"><input type="button" value="x" onclick="del(this)"></th>
-                    </tr>
-                    <tr>
-                        <td class="product"><input type="text" value=""/></td>
+                        <td class="product"><input type="text" value="Item name"/></td>
                         <td class="quantity"><input type="text" value="0"/></td>
                         <td class="price"><input type="text" value="0.00" min="0" step="0.05"/></td>
                         <td class="amount"><span class="value">0.00</span> <span class="currency">USD</span></td>
@@ -176,7 +160,7 @@
 
                     
                     <tr>
-                        <td class="label translate" id="due_date_label">Due date:</td>
+                        <td class="label translate" id="due_date_label" style="width: 65px;">Due date:</td>
                         <td class="value"><input id="due_date"/></td>
                         <td>&nbsp;</td>
                         <td class="label translate" id="amount_due_label">Amount due:</td>
@@ -192,7 +176,7 @@
                         <tr id="note">
                             <th class="translate">Note:</th>                            
                         </tr>
-                        <tr><td><textarea rows="2" cols="87" class="note-text"></textarea></td></tr>
+                        <tr><td><textarea rows="3" cols="100" class="note-text"></textarea></td></tr>
                     </table>
                 </footer>
             </div>
